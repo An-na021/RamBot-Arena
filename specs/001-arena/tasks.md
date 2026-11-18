@@ -16,6 +16,6 @@ Formato de commit: `Txxx: descrição`. Atualizar caixas somente após verifica�
 
 ## Ações externas do grupo
 
-- [ ] T010 [NFR-005] Publicar em https://github.com/An-na021/RamBot-Arena na branch main e verificar workflow remoto. Integrantes: Anna, William e Sandriely. Destino fornecido pelo usuário; envio e CI em andamento.
+- [x] T010 [NFR-005] Publicar em https://github.com/An-na021/RamBot-Arena na branch main e verificar workflow remoto. Integrantes: Anna, William e Sandriely. Publicação confirmada; GitHub Actions aprovado em https://github.com/An-na021/RamBot-Arena/actions/runs/44381741565.
 - [ ] T011 [NFR-003] Recriar a implementação em checkout separado usando somente documentos; registrar fração dos testes de aceitação que passa, sem alegar uso da suíte oculta da disciplina.
 - [ ] T012 [NFR-003] Ensaiar em grupo e apresentar pitch/demo em até dez minutos.

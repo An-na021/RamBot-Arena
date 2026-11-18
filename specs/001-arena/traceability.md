@@ -18,6 +18,6 @@ Commits de implementação seguem `Txxx: descrição`; consultar `git log --onel
 | NFR-002 física própria | T003 | geometria própria; core sem imports de motor/DOM/WebGL |
 | NFR-003 regeneração/documentos | T001/T009/T011/T012 | contracts/quickstart/references/checklist/pitch; experimento de regeneração e apresentação pendentes |
 | NFR-004 cobertura | T008 | vite.config.js, cobertura V8, scripts/report.mjs, README e CI |
-| NFR-005 rastreabilidade | T001/T010 | tasks, histórico local e script; repositório remoto pendente |
+| NFR-005 rastreabilidade | T001/T010 | tasks, histórico, script e publicação no GitHub com CI aprovado (validation.md) |
 
-T006 compartilha implementação genérica de colisão da T003; o commit de T006 deve acrescentar o aceite multi-robô. T009 reúne documentação de entrega. Publicação/CI remoto, revisão humana, regeneração independente e apresentação não são comprovadas por testes unitários.
+T006 compartilha implementação genérica de colisão da T003; o commit de T006 acrescenta o aceite multi-robô. T009 reúne documentação de entrega. Publicação/CI remoto comprovados em validation.md. Revisão humana, regeneração independente e apresentação não são comprovadas por testes unitários e permanecem pendentes.

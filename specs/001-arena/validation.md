@@ -1,6 +1,6 @@
 # Evidências e limites da entrega local
 
-Data: 2026-11-18. Grupo: Anna, William e Sandriely. Ambiente: Windows, Node 22.21.0, npm 10.9.4. Branch local `001-arena`.
+Data: 2026-11-18. Grupo: Anna, William e Sandriely. Ambiente local: Windows, Node 22.21.0, npm 10.9.4. Entrega publicada em `main`; branch local inicial `001-arena` preservada.
 
 ## Testes automatizados
 
@@ -10,7 +10,11 @@ Aceites analíticos: reta de 1 m em 20 ticks a 1 m/s; arco de quarto de círculo
 
 `npm run check` é o comando de entrega: testes, thresholds, métricas no README, build e rastreabilidade. CLI headless executada com `worlds/livre.json 20`: tick20, time1, x2,65 (controlador padrão a 0,65 m/s), y4,5, sem interface. O teste analítico de 1 m/s usa comando próprio, não a estratégia padrão.
 
-Histórico local organizado em commits com prefixos T001–T009/T013; os 15 requisitos FR/NFR têm tasks. O verificador também rejeita spec sem IDs e ignora commits de merge gerados pelo GitHub para verificar commits de implementação em PRs.
+Histórico organizado em commits com IDs das tasks; os 15 requisitos FR/NFR têm tasks. O verificador também rejeita spec sem IDs e ignora commits de merge gerados pelo GitHub para verificar commits de implementação em PRs.
+
+## Publicação e CI remoto
+
+Repositório público: https://github.com/An-na021/RamBot-Arena, branch `main`. Primeiro envio confirmado do commit `3534a69f92f8f4c3a55ec67ce42167fc95d9c028`, com o nome RamBot Arena. Workflow **Aceite e cobertura** concluído com **success**: https://github.com/An-na021/RamBot-Arena/actions/runs/44381741565. O runner Ubuntu executou instalação pelo lockfile, testes/cobertura/build/rastreabilidade, verificação das métricas do README e upload do relatório. Resultado local da mesma entrega: 92 testes, 100% linhas e 98,89% branches.
 
 Build de produção concluído com Vite. O bundle de Three.js produz aviso de tamanho acima de 500 KB; a aplicação estática continua funcionando. Auditoria das dependências de execução: zero vulnerabilidades reportadas pelo npm na consulta desta entrega. Dependências de desenvolvimento não fazem parte dessa afirmação.
 
@@ -30,7 +34,6 @@ Sete slides editáveis sem código preparados no chat e renderizados para revis�
 
 ## Pendências externas, sem evidência inventada
 
-1. Destino informado pelo usuário: https://github.com/An-na021/RamBot-Arena. Repositório remoto inicialmente vazio; publicação na main e verificação do CI em andamento (T010). A branch local 001-arena preserva o baseline anterior à publicação.
-2. Regeneração independente a partir somente dos documentos não executada (T011). Protocolo em quickstart.md. Suíte oculta da disciplina não disponível.
-3. Revisão humana formal, ensaio e pitch ao vivo pendentes (T012).
-4. Sumô simplificado usa contatos bloqueantes. Forças/empurrões, Portugol/Maker, WebSocket e BMAD não implementados.
+1. Regeneração independente a partir somente dos documentos não executada (T011). Protocolo em quickstart.md. Suíte oculta da disciplina não disponível.
+2. Revisão humana formal, ensaio e pitch ao vivo pendentes (T012).
+3. Sumô simplificado usa contatos bloqueantes. Forças/empurrões, Portugol/Maker, WebSocket e BMAD não implementados.

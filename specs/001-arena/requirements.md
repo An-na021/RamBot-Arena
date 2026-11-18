@@ -34,7 +34,7 @@ Data: 2026-11-18. Fonte: enunciado fornecido pelo usuário, Trilha 4 — SheepBo
 | Bônus? | Fora do escopo | Priorizar documentação e aceite |
 
 ## Pendências externas
-Grupo informado: Anna, William e Sandriely. Repositório informado: https://github.com/An-na021/RamBot-Arena; produto nomeado RamBot Arena. Pendências: publicar/verificar CI, ensaiar e apresentar pitch. Modalidade confirmada: sumô.
+Grupo informado: Anna, William e Sandriely. Repositório publicado: https://github.com/An-na021/RamBot-Arena; produto nomeado RamBot Arena. GitHub Actions aprovado. Pendências: regeneração independente, ensaio e apresentação do pitch. Modalidade confirmada: sumô.
 
 ## Complemento após esclarecimento
 
