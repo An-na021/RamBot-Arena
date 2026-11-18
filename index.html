@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101813"><meta name="description" content="Laboratório de controle de robôs SheepBotz: simulação determinística, sensores e replay."><title>SheepBotz Arena — Laboratório de robótica</title></head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon">S<span>↗</span></span><div>SHEEPBOTZ<span class="brand-sub">ARENA / LABORATÓRIO DE ROBÓTICA</span></div></a><div class="header-right"><span class="pill"><i></i> SIMULADOR LOCAL</span><span class="version">POC 01.0</span></div></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">UNIVILLE · EQUIPE SHEEPBOTZ</p><h1>Estratégias em movimento<span>.</span></h1><p>Experimente o controle. Observe os sensores. Repita o resultado.</p></div><div class="intro-meta"><span>02D / LÓGICA</span><span>03D / VISUALIZAÇÃO</span></div></section>
+    <div class="workspace">
+      <aside class="panel config"><div class="panel-heading"><h2><span>01</span> Experimento</h2><span class="small-tag">LIVE</span></div>
+        <label for="world-select">MUNDO DE TESTE</label><select id="world-select"><option value="sumo">Dojô · sumô SheepBotz</option><option value="labirinto">Labirinto · treinamento</option><option value="livre">Campo livre · calibração</option></select>
+        <div class="inline-actions"><button id="edit-world" class="subtle">Editar JSON ↗</button><label class="file-button subtle" for="world-file">Importar mundo</label><input type="file" id="world-file" accept=".json,application/json" hidden></div>
+        <div class="divider"></div><label for="robot-select">ROBÔ ATIVO</label><select id="robot-select"></select>
+        <div class="code-heading"><label for="controller">CONTROLADOR</label><span>JavaScript · API limitada</span></div><textarea id="controller" spellcheck="false" aria-label="Código do controlador"></textarea>
+        <button id="apply" class="apply">Aplicar controlador <span>↗</span></button><details><summary>API e sintaxe disponíveis</summary><p>readLaser(), readOdometry(), readBumper(), setSpeed(v, w), random(). Use const/let, if/else, operações, acesso a leituras e ternário. Sem laços, funções ou APIs do navegador. Unidades: m/s e rad/s.</p></details>
+        <div class="experiment-note"><span class="note-icon">◎</span><p>Mesmo mundo. Mesma seed.<br><strong>O mesmo resultado.</strong></p></div><p id="scenario-note" style="font-size:10px;line-height:1.6;color:#9db58c">Sumô simplificado: contatos bloqueantes, sem forças ou empurrões.</p>
+      </aside>
+      <section class="arena-panel"><div class="arena-toolbar"><div><span class="status-dot"></span><span id="mode">PRONTO PARA SIMULAR</span></div><label class="toggle"><input type="checkbox" id="rays" checked> Raios laser</label></div><div id="viewport" aria-label="Visualização 3D da arena"><div class="viewport-label">SHEEPBOTZ / TEST FIELD <span id="dimensions"></span></div><div class="viewport-help">ARRASTE PARA ORBITAR <span>·</span> SCROLL PARA ZOOM</div><div class="axis-label">Y ↑<br>↳ X</div></div>
+        <div class="transport"><div class="transport-buttons"><button id="play" class="play" title="Iniciar ou pausar">▶ <span>Iniciar</span></button><button id="step" title="Avançar um tick">▹│ <span>Passo</span></button><button id="reset" title="Voltar ao início">↺ <span>Reset</span></button></div><div class="clock"><strong id="time">00.00</strong><span>SEGUNDOS</span></div><div class="tick"><strong id="tick">00000</strong><span>TICKS</span></div></div>
+        <div class="replay-bar"><button id="record"><span class="record-dot"></span> Gravar</button><button id="export">Exportar replay</button><label class="file-button" for="replay-file">Abrir replay ↗</label><input type="file" id="replay-file" accept=".json,application/json" hidden><button id="exit-replay" hidden>Sair do replay</button><input type="range" id="timeline" min="0" max="0" value="0" aria-label="Tick da reprodução" disabled></div>
+      </section>
+      <aside class="panel inspection"><div class="panel-heading"><h2><span>02</span> Telemetria</h2><span class="live-label">● AO VIVO</span></div><div class="robot-card"><span class="robot-symbol">◉</span><div><strong id="robot-name"></strong><span>TRAÇÃO DIFERENCIAL</span></div></div><p class="section-label">ODOMETRIA <span>m / rad</span></p><div class="pose-grid"><div><span>POSIÇÃO X</span><strong id="pos-x">0.000</strong></div><div><span>POSIÇÃO Y</span><strong id="pos-y">0.000</strong></div><div><span>ÂNGULO θ</span><strong id="theta">0.000</strong></div><div><span>DISTÂNCIA</span><strong id="distance">0.000</strong></div></div>
+        <p class="section-label">SENSOR LASER <span id="laser-meta"></span></p><div id="laser-readings"></div><div class="bumper"><span>BUMPER</span><strong id="bumper">LIVRE</strong></div><div class="sim-details"><div><span>Passo fixo</span><strong id="dt"></strong></div><div><span>Seed</span><strong id="seed"></strong></div><div><span>Robôs na arena</span><strong id="robot-count"></strong></div></div>
+      </aside>
+    </div>
+    <div id="message" role="status" aria-live="polite">Arena carregada. Aplique um controlador ou inicie o experimento.</div>
+    <footer><span>PROJETE. SIMULE. APRENDA.</span><span>SDD / TRILHA 04 <b>✳</b> SHEEPBOTZ ARENA</span></footer>
+  </main>
+  <dialog id="world-dialog"><form method="dialog"><div class="dialog-header"><h2>Descrição do mundo</h2><button aria-label="Fechar editor">×</button></div><label for="world-json">JSON · metros e radianos</label><textarea id="world-json" spellcheck="false"></textarea><button type="button" id="load-world" class="apply">Carregar mundo</button></form></dialog>
+  <script type="module" src="/src/app.js"></script>
+</body></html>
