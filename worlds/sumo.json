@@ -1,0 +1,9 @@
+{
+  "name": "Dojô · sumô SheepBotz", "width": 12, "height": 9, "dt": 0.05, "seed": 42,
+  "scenario": {"type": "sumo", "x": 6, "y": 4.5, "radius": 3.5, "maxTicks": 1200},
+  "obstacles": [],
+  "robots": [
+    {"id": "sheep-01", "x": 4.8, "y": 4.5, "theta": 0, "radius": 0.28, "laser": {"rays": 9, "range": 4, "fov": 3.141592653589793}},
+    {"id": "sheep-02", "x": 7.2, "y": 4.5, "theta": 3.141592653589793, "radius": 0.28, "laser": {"rays": 9, "range": 4, "fov": 3.141592653589793}}
+  ]
+}

@@ -1,0 +1,12 @@
+import {it,expect} from 'vitest';
+import {parseSumo,sumoResult} from '../src/modes/sumo.js';
+import {Session} from '../src/core/session.js';
+import sumo from '../worlds/sumo.json';
+
+it('FR-010 sumô é módulo opcional e preserva núcleo genérico',()=>{expect(parseSumo(undefined,sumo)).toBeNull();expect(sumoResult(null,{})).toBeNull();const s=new Session(sumo);expect(s.result.finished).toBe(false);expect(s.world.scenario.type).toBe('sumo');});
+it.each([null,{type:'other'}, {...sumo.scenario,x:0}, {...sumo.scenario,maxTicks:.5}, {...sumo.scenario,radius:-1}, {...sumo.scenario,y:Infinity}])('FR-010 ringue inválido caso %#',config=>expect(()=>parseSumo(config,sumo)).toThrow('Sumô'));
+it('FR-010 exige dois participantes e início no ringue',()=>{expect(()=>parseSumo(sumo.scenario,{...sumo,robots:[]})).toThrow();expect(()=>parseSumo(sumo.scenario,{...sumo,robots:[{...sumo.robots[0],x:0},sumo.robots[1]]})).toThrow('iniciar');});
+it('FR-010 derrota por saída completa, tangência não derrota',()=>{const s=new Session(sumo),state=s.state;state.robots[0].x=2.22;expect(sumoResult(sumo.scenario,state).finished).toBe(false);state.robots[0].x=2.2;expect(sumoResult(sumo.scenario,state).winner).toBe('sheep-02');state.robots[1].x=10;expect(sumoResult(sumo.scenario,state).winner).toBeNull();});
+it('FR-010 empate no limite, pausa automática e reset',()=>{const s=new Session({...sumo,scenario:{...sumo.scenario,maxTicks:1}});s.play();s.step();expect(s.running).toBe(false);expect(s.result.reason).toContain('Tempo limite');s.step();expect(s.state.tick).toBe(1);s.play();expect(s.running).toBe(false);s.reset();expect(s.result.finished).toBe(false);});
+it('FR-010 vencedor após saída e replay mantém regras',()=>{const s=new Session(sumo);s.selected='sheep-01';s.applyController('setSpeed(-1,0);');s.selected='sheep-02';s.applyController('setSpeed(0,0);');s.startRecording();s.play();for(let i=0;i<100&&s.running;i++)s.step();expect(s.result.winner).toBe('sheep-02');const end=s.state;const data=s.stopRecording();s.importReplay(JSON.stringify(data));s.seek(s.replay.frames.length-1);expect(s.result.winner).toBe('sheep-02');expect(s.state).toEqual(end);s.exitReplay();expect(s.result.finished).toBe(false);});
+it('FR-001 FR-010 rejeita cenário antes de trocar mundo',()=>{const s=new Session(sumo);s.step();expect(()=>s.load(JSON.stringify({...sumo,scenario:{type:'bad'}}))).toThrow();expect(s.state.tick).toBe(1);});
