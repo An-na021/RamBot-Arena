@@ -1,4 +1,4 @@
-# SheepBotz Arena — Constitution
+# RamBot Arena — Constitution
 
 Versão 1.1.0 · ratificada em 2026-11-18 · ciclo greenfield · framework GitHub SpecKit.
 
@@ -18,9 +18,11 @@ JavaScript ESM, Node 22+, Vite, Three.js/OrbitControls exclusivamente para desen
 IDs FR/NFR → tasks Txxx → testes com IDs → commits com task no título. Cobertura de linhas, funções, branches e statements de todo `src/**/*.js` ≥80%, exigida pelo runner. README inicia com quantidade de testes e cobertura geradas pela execução. Relatórios JSON e LCOV versionados; HTML reproduzível. Testes headless verificam posição, sensores e erros de entrada.
 
 ## VI. Entrega em grupo
-Trio: Anna, William e Sandriely, conforme esclarecimento explícito do usuário. Um repositório GitHub para o grupo; URL pendente de definição. Pitch até 10 minutos, sem código nos slides. IA utilizada: Codex; decisões e validação são responsabilidade do grupo.
+Trio: Anna, William e Sandriely, conforme esclarecimento explícito do usuário. Repositório do grupo: https://github.com/An-na021/RamBot-Arena, informado pelo usuário. Nome do produto: RamBot Arena; equipe atendida: Univille SheepBotz. Pitch até 10 minutos, sem código nos slides. IA utilizada: Codex; decisões e validação são responsabilidade do grupo.
 
 ## Governança
 Alterações registram data, motivo e impacto; revisar spec/plan/tasks antes de implementar. Incrementar major para princípio incompatível, minor para princípio adicional e patch para esclarecimento.
 
 1.1.0 (2026-11-18): escolha explícita do usuário substitui a hipótese de labirinto por sumô; acrescentados FR-010/T013, módulo de modalidade, mundo, aceites e pitch. Pesquisa das oito referências registrada em references.md. Princípios de determinismo e independência preservados.
+
+2026-11-18: nome público RamBot Arena e repositório definidos pelo usuário; atualização editorial sem alteração dos princípios.

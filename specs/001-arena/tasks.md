@@ -12,9 +12,10 @@ Formato de commit: `Txxx: descrição`. Atualizar caixas somente após verifica�
 - [x] T008 [NFR-004] Cobertura de todo src ≥80% nas quatro métricas; relatório versionado, README gerado e CI. Depende T002–T007.
 - [x] T009 [NFR-003] Pitch sem código, demo cronometrada, relatório de validação e checklist de entrega. Depende T008.
 - [x] T013 [US4, FR-010] Esclarecimento do usuário: demo de sumô, ringue, regra separada de vitória/empate, pausa e replay; testes de saída/tangência/limite e fonte Roboton. Depende T005/T006/T007. Limite explícito: sem empurrões.
+- [x] T014 [FR-006, NFR-003] Adotar nome público RamBot Arena na interface, pacote e documentos após definição do repositório pelo usuário; preservar SheepBotz como equipe atendida.
 
 ## Ações externas do grupo
 
-- [ ] T010 [NFR-005] Publicar em um repositório GitHub do grupo; verificar workflow no remoto. Integrantes preenchidos: Anna, William e Sandriely. Exige destino/conta GitHub.
+- [ ] T010 [NFR-005] Publicar em https://github.com/An-na021/RamBot-Arena na branch main e verificar workflow remoto. Integrantes: Anna, William e Sandriely. Destino fornecido pelo usuário; envio e CI em andamento.
 - [ ] T011 [NFR-003] Recriar a implementação em checkout separado usando somente documentos; registrar fração dos testes de aceitação que passa, sem alegar uso da suíte oculta da disciplina.
 - [ ] T012 [NFR-003] Ensaiar em grupo e apresentar pitch/demo em até dez minutos.

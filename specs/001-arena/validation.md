@@ -30,7 +30,7 @@ Sete slides editáveis sem código preparados no chat e renderizados para revis�
 
 ## Pendências externas, sem evidência inventada
 
-1. URL/autenticação do repositório GitHub não fornecidas. Repositório local e CI preparados; publicação e execução de CI remoto pendentes (T010).
+1. Destino informado pelo usuário: https://github.com/An-na021/RamBot-Arena. Repositório remoto inicialmente vazio; publicação na main e verificação do CI em andamento (T010). A branch local 001-arena preserva o baseline anterior à publicação.
 2. Regeneração independente a partir somente dos documentos não executada (T011). Protocolo em quickstart.md. Suíte oculta da disciplina não disponível.
 3. Revisão humana formal, ensaio e pitch ao vivo pendentes (T012).
 4. Sumô simplificado usa contatos bloqueantes. Forças/empurrões, Portugol/Maker, WebSocket e BMAD não implementados.

@@ -1,4 +1,4 @@
-# Feature Specification: SheepBotz Arena
+# Feature Specification: RamBot Arena
 
 Feature: `001-arena` · criada em 2026-11-18 · status: baseline da PoC.
 Entrada: requirements.md. Público: integrantes da equipe Univille SheepBotz que querem testar controle sem desgaste físico.

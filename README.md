@@ -2,7 +2,7 @@
 **92 testes · 100% de cobertura de linhas**
 <!-- metrics:end -->
 
-# SheepBotz Arena
+# RamBot Arena
 
 PoC da Trilha 4, Trabalho Final de Spec-Driven Development. Simulador genérico de robôs de tração diferencial, com núcleo 2D headless e visualização 3D. Modalidade da demo: **sumô simplificado**. Framework: **GitHub SpecKit**. Assistente: Codex.
 
@@ -57,6 +57,6 @@ Relatórios versionados em [resumo de cobertura](coverage/coverage-summary.json)
 
 ## Grupo e GitHub
 
-**Anna, William e Sandriely** (trio informado pelo usuário). URL GitHub: **pendente**.
+**Anna, William e Sandriely** (trio informado pelo usuário). Repositório: [An-na021/RamBot-Arena](https://github.com/An-na021/RamBot-Arena).
 
-Commits usam `Txxx: descrição`; cada task aponta para FR/NFR. Repositório Git local inicializado; publicação exige destino/conta GitHub do grupo. Depois de definir remoto, publique a branch `001-arena` e confira CI. T010/T011/T012 ficam abertas até publicação, regeneração independente e apresentação efetivas.
+Commits usam `Txxx: descrição`; cada task aponta para FR/NFR. A entrega usa a branch principal `main`; o desenvolvimento inicial está preservado na branch local `001-arena`. [Acompanhar testes e cobertura no GitHub Actions](https://github.com/An-na021/RamBot-Arena/actions). T011/T012 permanecem abertas até regeneração independente e apresentação efetivas.

@@ -1,4 +1,4 @@
-# Pitch e demo — duração alvo 9 minutos
+# RamBot Arena — pitch e demo de 9 minutos
 
 Sem código nos slides. Grupo: **Anna, William e Sandriely**. Sugestão de fala: Anna apresenta problema/SDD, William conduz demo, Sandriely apresenta evidências/limites. Slides e demo devem mostrar comportamento e evidências, sem prometer equivalência física. IA: Codex; framework: GitHub SpecKit.
 
