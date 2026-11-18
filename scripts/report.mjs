@@ -1,0 +1,18 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {relative} from 'node:path';
+const raw=JSON.parse(readFileSync('coverage/tests.json','utf8'));
+const total=raw.numTotalTests;
+if(!total||raw.numFailedTests||raw.numPassedTests!==total)throw new Error('Relatório exige todos os testes passando');
+const coverage=JSON.parse(readFileSync('coverage/coverage-summary.json','utf8'));
+for(const metric of ['lines','branches','functions','statements'])if(coverage.total[metric].pct<80)throw new Error(`Cobertura insuficiente: ${metric}`);
+const percent=coverage.total.lines.pct;
+const text=`**${total} testes · ${percent}% de cobertura de linhas**`;
+let readme=readFileSync('README.md','utf8');
+readme=readme.replace(/<!-- metrics:start -->[\s\S]*?<!-- metrics:end -->/,`<!-- metrics:start -->\n${text}\n<!-- metrics:end -->`);
+writeFileSync('README.md',readme);
+const normalized={total:coverage.total};
+for(const [file,value] of Object.entries(coverage))if(file!=='total')normalized[relative(process.cwd(),file).replaceAll('\\','/')]=value;
+writeFileSync('coverage/coverage-summary.json',JSON.stringify(normalized,null,2)+'\n');
+const tests=raw.testResults.flatMap(file=>file.assertionResults.map(test=>({name:test.fullName,status:test.status}))).sort((a,b)=>a.name.localeCompare(b.name,'en'));
+writeFileSync('coverage/tests.json',JSON.stringify({total,passed:raw.numPassedTests,failed:raw.numFailedTests,tests},null,2)+'\n');
+console.log(`${total} testes; linhas ${percent}%; branches ${coverage.total.branches.pct}%; funções ${coverage.total.functions.pct}%; statements ${coverage.total.statements.pct}%. README atualizado.`);

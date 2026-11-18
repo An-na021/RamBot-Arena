@@ -1,0 +1,375 @@
+{
+  "total": 92,
+  "passed": 92,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "FR-001 FR-009 importação de arquivos valida tamanho e ausência de seleção",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 FR-010 rejeita cenário antes de trocar mundo",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 importa editor JSON e preserva estado em erro",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"height\":null}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"obstacles\":[{\"x\":1,\"y\":1,\"width\":2,\"height\":2}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"obstacles\":[{\"x\":11,\"y\":0,\"width\":2,\"height\":1}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"obstacles\":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"obstacles\":[null]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"obstacles\":null}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"<img>\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":0,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}},{\"id\":\"r2\",\"x\":2.1,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1,\"range\":10,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":{\"rays\":1.5,\"range\":1,\"fov\":0}}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[{\"id\":\"r1\",\"x\":2,\"y\":2,\"theta\":0,\"radius\":0.25,\"laser\":null}]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"robots\":[null]}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"seed\":1.2}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo identifica campo inválido {\"width\":0}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo importação falha sem substituir experimento",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo normaliza defaults e copia entrada",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo rejeita raiz inválida, caso 0",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo rejeita raiz inválida, caso 1",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo rejeita raiz inválida, caso 2",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo rejeita raiz inválida, caso 3",
+      "status": "passed"
+    },
+    {
+      "name": "FR-001 mundo rejeita raiz inválida, caso 4",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria arco analítico e giro estacionário",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria bordas bloqueiam e tangência é permitida",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria contato com parede fina e bumper",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria laser N raios e alcance máximo",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria rayBox paralelos, interior e atrás",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria raycast frontal com parede a dois metros",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria rayCircle interseção, interior, tangência e ausência",
+      "status": "passed"
+    },
+    {
+      "name": "FR-002 FR-003 NFR-002 geometria própria reta após N ticks e odometria analíticas",
+      "status": "passed"
+    },
+    {
+      "name": "FR-003 bumper visível após contato",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado condições, curto circuito, ternário e leituras",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado erro de compilação preserva controlador anterior",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado falha sem corromper tick: const a=1; setSpeed(a[0],0);",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado falha sem corromper tick: const a=readOdometry(); setSpeed(a[1],0);",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado falha sem corromper tick: setSpeed(1/0,0);",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado falha sem corromper tick: setSpeed(missing,0);",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado falha sem corromper tick: setSpeed(readLaser()[9],0);",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado IDs que coincidem com protótipos não acessam propriedades herdadas",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado limita tamanho, número de nós e profundidade",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado limita velocidade e comando ausente para",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado operações aritméticas e comparações",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado ramos alternativos e ||",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita const random = 1;",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita const x = \"texto\";",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita const x = 2 ** 2;",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita const x = readLaser().constructor;",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita const x = typeof 1;",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita fetch(1)",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita for(;;) {}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita readLaser.constructor(1)",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita setSpeed(",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado rejeita while(true) {}",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 controlador limitado todos os sensores podem comandar velocidade",
+      "status": "passed"
+    },
+    {
+      "name": "FR-004 erros de programa na aplicação e execução ficam visíveis",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-008 interface mostra tempo, seleção, passo, pause e reset",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay captura round trip, seek, reset, fim e retorno live",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay erro pausa sessão",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay limite finaliza captura e continua simulação",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay play pause step reset e troca de programa",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita frames, sensores e poses inválidas atomicamente",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita gravação inválida, caso 0",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita gravação inválida, caso 1",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita gravação inválida, caso 2",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita gravação inválida, caso 3",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay rejeita gravação inválida, caso 4",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-009 sessão e replay stop vazio e seek inválido",
+      "status": "passed"
+    },
+    {
+      "name": "FR-005 FR-010 fim de combate mostra vencedor e aviso",
+      "status": "passed"
+    },
+    {
+      "name": "FR-006 adapta estado 2D para cena 3D, desenha ringue, raios e descarta recursos",
+      "status": "passed"
+    },
+    {
+      "name": "FR-006 indisponibilidade de WebGL mostra mensagem clara",
+      "status": "passed"
+    },
+    {
+      "name": "FR-006 raio único é desenhado à frente",
+      "status": "passed"
+    },
+    {
+      "name": "FR-009 grava, exporta, importa, busca e sai do replay",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 derrota por saída completa, tangência não derrota",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 empate no limite, pausa automática e reset",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 exige dois participantes e início no ringue",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 0",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 1",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 2",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 3",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 4",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 ringue inválido caso 5",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 sumô é módulo opcional e preserva núcleo genérico",
+      "status": "passed"
+    },
+    {
+      "name": "FR-010 vencedor após saída e replay mantém regras",
+      "status": "passed"
+    },
+    {
+      "name": "NFR-001 FR-007 determinismo e múltiplos robôs demo labirinto roda 300 ticks sem penetração e repete",
+      "status": "passed"
+    },
+    {
+      "name": "NFR-001 FR-007 determinismo e múltiplos robôs falha do segundo controlador preserva seed e todos os robôs",
+      "status": "passed"
+    },
+    {
+      "name": "NFR-001 FR-007 determinismo e múltiplos robôs robôs colidem, têm comandos independentes e laser mútuo",
+      "status": "passed"
+    },
+    {
+      "name": "NFR-001 FR-007 determinismo e múltiplos robôs seed, reset e clone reproduzem execução",
+      "status": "passed"
+    }
+  ]
+}
