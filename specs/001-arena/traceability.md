@@ -1,6 +1,6 @@
 # Matriz requisito → task → evidência
 
-Commits seguem `Txxx: descrição`; consultar `git log --oneline`. `node scripts/traceability.mjs` verifica IDs do spec/tasks e títulos do histórico.
+Commits de implementação seguem `Txxx: descrição`; consultar `git log --oneline`. `node scripts/traceability.mjs` verifica IDs do spec/tasks e títulos do histórico sem commits de merge automáticos, inclusive em pull requests do GitHub.
 
 | Requisito | Tasks | Implementação / teste de aceite |
 | --- | --- | --- |

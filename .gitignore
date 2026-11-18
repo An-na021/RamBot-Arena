@@ -5,6 +5,5 @@ coverage/*
 !coverage/coverage-summary.json
 !coverage/lcov.info
 !coverage/tests.json
-!coverage/README.md
 *.log
 .DS_Store
