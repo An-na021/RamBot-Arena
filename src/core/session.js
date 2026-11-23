@@ -1,18 +1,26 @@
 import { Simulation } from './simulation.js';
 import { parseRecording, MAX_TICKS } from './recording.js';
-import { parseSumo, sumoResult } from '../modes/sumo.js';
+import { parseSumo, sumoResult, sumoController } from '../modes/sumo.js';
+import { parseMaze, mazeController } from '../modes/maze.js';
+
+// Despacho de modalidade (feature 006): labirinto ou sumô (validação de sumô inalterada para os demais casos).
+const parseScenario = (config, world) => config?.type === 'labirinto' ? parseMaze(config) : parseSumo(config, world);
+const defaultProgram = scenario => scenario?.type === 'labirinto' ? mazeController() : scenario ? sumoController(scenario) : null;
+const sumoOnly = scenario => scenario?.type === 'sumo' ? scenario : null;
 
 export class Session {
   constructor(world) { this.load(world); }
   load(world) {
     const sim = new Simulation(world);
     const input = typeof world === 'string' ? JSON.parse(world) : world;
-    const scenario = parseSumo(input.scenario, sim.world);
+    const scenario = parseScenario(input.scenario, sim.world);
+    const program = defaultProgram(scenario);
+    if (program) sim.world.robots.forEach(r => sim.setController(r.id, program));
     this.sim = sim; this.scenario = scenario; this.running = false; this.replay = null; this.cursor = 0; this.recording = null; this.lastRecording = null; this.notice = ''; this.selected = sim.robots[0].id;
   }
   get world() { return this.replay ? this.replay.world : { ...this.sim.world, ...(this.scenario ? { scenario:this.scenario } : {}) }; }
   get state() { return this.replay ? structuredClone(this.replay.frames[this.cursor]) : this.sim.snapshot(); }
-  get result() { return sumoResult(this.replay ? this.replay.scenario : this.scenario, this.state); }
+  get result() { return sumoResult(sumoOnly(this.replay ? this.replay.scenario : this.scenario), this.state); }
   play() { if (!this.replay && this.result?.finished) return; this.running = true; }
   pause() { this.running = false; }
   step() {
@@ -40,7 +48,7 @@ export class Session {
   importReplay(input) {
     const replay = parseRecording(input);
     const raw = typeof input === 'string' ? JSON.parse(input) : input;
-    replay.scenario = parseSumo(raw.world.scenario, replay.world);
+    replay.scenario = parseScenario(raw.world.scenario, replay.world);
     if (replay.scenario) replay.world.scenario = replay.scenario;
     this.pause(); this.recording = null; this.replay = replay; this.cursor = 0; this.selected = replay.world.robots[0].id;
   }

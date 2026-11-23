@@ -12,7 +12,8 @@ Data: 2026-11-18. Fonte: enunciado fornecido pelo usuário, Trilha 4 — SheepBo
 | Visual 3D, câmera orbital e raios | FR-006 visualização fiel | mínima |
 | Headless determinístico com seed e passo fixos | NFR-001 reprodução independente da UI | restrição |
 | Sem motor de física | NFR-002 geometria própria | restrição |
-| Vários robôs, painel, gravação/replay | FR-007/008/009 | completo |
+| Painel de inspeção do robô selecionado | FR-008 | mínima (exigido pela US2) |
+| Vários robôs, gravação/replay | FR-007/009 | completo |
 | Spec capaz de recriar o sistema | NFR-003 contratos e critérios verificáveis | universal |
 | Cobertura ≥80%, relatório e README atualizado | NFR-004 evidência automatizada | universal |
 | Commits → tasks → requisitos | NFR-005 rastreabilidade | universal |
@@ -29,12 +30,12 @@ Data: 2026-11-18. Fonte: enunciado fornecido pelo usuário, Trilha 4 — SheepBo
 | Colisão em alta velocidade? | Subpassos limitam deslocamento a metade do menor raio | Evita atravessar paredes finas |
 | JS arbitrário e laços? | Subconjunto documentado, sem laços; rejeitar sintaxe fora dele com erro claro | Programa defeituoso não trava o navegador |
 | Tempo real versus passo? | dt fixo 0,05 s por padrão; UI só agenda ticks | FPS não altera a física |
-| Limites da PoC? | Até 8 robôs, 100 obstáculos, 64 raios/robô, 5.000 ticks gravados; arquivo replay até 100 MB | Limites finitos para uso no navegador |
+| Limites da PoC? | Até 8 robôs, 100 obstáculos, 64 raios/robô, 5.000 ticks gravados; arquivo replay até 100.000.000 bytes | Limites finitos para uso no navegador |
 | Reset preserva o quê? | Mesmo mundo/controladores/seed; zera tick e replay | Comparação reproduzível |
 | Bônus? | Fora do escopo | Priorizar documentação e aceite |
 
 ## Pendências externas
-Grupo informado: Anna, William e Sandriely. Repositório publicado: https://github.com/An-na021/RamBot-Arena; produto nomeado RamBot Arena. GitHub Actions aprovado. Pendências: regeneração independente, ensaio e apresentação do pitch. Modalidade confirmada: sumô.
+Grupo informado: Anna Heloísa Malschitzky, William Fagundes e Sandriely Maciel. Repositório publicado: https://github.com/An-na021/RamBot-Arena; produto nomeado RamBot Arena. GitHub Actions aprovado. Pendências: regeneração independente, ensaio e apresentação do pitch. Modalidade confirmada: sumô.
 
 ## Complemento após esclarecimento
 

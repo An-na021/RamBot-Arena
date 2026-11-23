@@ -13,11 +13,23 @@ Commits de implementação seguem `Txxx: descrição`; consultar `git log --onel
 | FR-007 multi-robô | T006 | simulation.js; colisão simultânea, sensores mútuos, falha atômica |
 | FR-008 inspeção | T005 | app.js; mudança de robô, pose/laser/bumper ao vivo |
 | FR-009 replay | T007 | recording.js/session.js; captura/round-trip/seek/limite/rejeição e UI |
-| FR-010 sumô | T013 | modes/sumo.js; sumo.test.js saída/tangência/empate/pausa/reset/replay |
+| FR-010 sumô | T013 | modes/sumo.js e contracts/session.md; sumo.test.js saída/tangência/empate/pausa/reset/replay |
 | NFR-001 determinismo | T003 | PRNG semeado/reset; comparação de 50 ticks e labirinto de 300 ticks |
 | NFR-002 física própria | T003 | geometria própria; core sem imports de motor/DOM/WebGL |
-| NFR-003 regeneração/documentos | T001/T009/T011/T012 | contracts/quickstart/references/checklist/pitch; experimento de regeneração e apresentação pendentes |
-| NFR-004 cobertura | T008 | vite.config.js, cobertura V8, scripts/report.mjs, README e CI |
-| NFR-005 rastreabilidade | T001/T010 | tasks, histórico, script e publicação no GitHub com CI aprovado (validation.md) |
+| NFR-003 regeneração/documentos | T001/T009/T011/T012 | contracts/quickstart/references/checklist/pitch; process.test.js `NFR-003 documentos de regeneração`; experimento de regeneração e apresentação pendentes |
+| NFR-004 cobertura | T008 | vite.config.js, cobertura V8, process.test.js `NFR-004 thresholds`, scripts/report.mjs, README e CI |
+| NFR-005 rastreabilidade | T001/T008/T010 | tasks, histórico, script, process.test.js `NFR-005 todo FR/NFR` e publicação no GitHub com CI aprovado (validation.md) |
 
 T006 compartilha implementação genérica de colisão da T003; o commit de T006 acrescenta o aceite multi-robô. T009 reúne documentação de entrega. Publicação/CI remoto comprovados em validation.md. Revisão humana, regeneração independente e apresentação não são comprovadas por testes unitários e permanecem pendentes.
+
+## Features 002–006 (Spec Kit)
+
+Cada feature tem sua própria matriz em `specs/<feature>/tasks.md` (tasks citam FR/SC) e testes nomeados com o número da feature. `node scripts/traceability.mjs` verifica que todo FR/NFR de cada spec aparece no `tasks.md` da feature e em ao menos um teste cujo nome começa com o número da feature.
+
+| Feature | Requisitos | Tasks | Testes |
+| --- | --- | --- | --- |
+| 002 estratégia padrão de sumô | FR-001–FR-007 | T101–T118 | tests/sumo-strategy.test.js |
+| 003 física real dos robôs | FR-001–FR-009 | T201–T217 | tests/dynamics.test.js |
+| 004 memória no controlador | FR-001–FR-007 | T301–T314 | tests/memory.test.js |
+| 005 correção do bumper | FR-001–FR-004 | T401–T408 | tests/bumper.test.js |
+| 006 estratégia de labirinto | FR-001–FR-006 | T501–T512 | tests/maze.test.js |

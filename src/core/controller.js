@@ -1,6 +1,6 @@
 import { parse } from 'acorn';
 
-const apiNames = new Set(['readLaser', 'readOdometry', 'readBumper', 'setSpeed', 'random']);
+const apiNames = new Set(['readLaser', 'readOdometry', 'readBumper', 'setSpeed', 'random', 'memory', 'remember']);
 const types = new Set(['Program', 'VariableDeclaration', 'VariableDeclarator', 'Identifier', 'Literal', 'ExpressionStatement', 'CallExpression', 'MemberExpression', 'BinaryExpression', 'LogicalExpression', 'UnaryExpression', 'IfStatement', 'BlockStatement', 'ConditionalExpression', 'EmptyStatement']);
 const binaries = { '+': (a,b) => a+b, '-': (a,b) => a-b, '*': (a,b) => a*b, '/': (a,b) => a/b, '%': (a,b) => a%b,
   '<': (a,b) => a<b, '>': (a,b) => a>b, '<=': (a,b) => a<=b, '>=': (a,b) => a>=b, '===': (a,b) => a===b, '!==': (a,b) => a!==b };
@@ -21,7 +21,7 @@ export function compileController(source) {
   function validate(node, depth = 0) {
     if (!node || typeof node !== 'object') return;
     if (Array.isArray(node)) { node.forEach(n => validate(n, depth)); return; }
-    if (++count > 500 || depth > 40) throw new Error('Controlador: programa excede orçamento de complexidade');
+    if (++count > 1000 || depth > 40) throw new Error('Controlador: programa excede orçamento de complexidade');
     if (!types.has(node.type)) throw new Error(`Controlador: sintaxe não permitida (${node.type})`);
     if (node.type === 'CallExpression' && (node.callee.type !== 'Identifier' || !apiNames.has(node.callee.name))) throw new Error('Controlador: chamada fora da API permitida');
     if (node.type === 'MemberExpression' && !node.computed && !['x', 'y', 'theta', 'distance', 'length'].includes(node.property.name)) throw new Error('Controlador: propriedade não permitida');
@@ -34,7 +34,7 @@ export function compileController(source) {
   }
   validate(ast);
   return api => {
-    const vars = Object.create(null); let budget = 500;
+    const vars = Object.create(null); let budget = 1000;
     function evaluate(n) {
       if (--budget < 0) throw new Error('Controlador: orçamento de execução excedido');
       switch (n.type) {

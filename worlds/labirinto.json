@@ -1,5 +1,6 @@
 {
   "name": "Labirinto · treinamento", "width": 12, "height": 9, "dt": 0.05, "seed": 42,
+  "scenario": {"type": "labirinto"},
   "obstacles": [
     {"x": 3, "y": 0, "width": 0.35, "height": 5.4},
     {"x": 6, "y": 3, "width": 0.35, "height": 6},
