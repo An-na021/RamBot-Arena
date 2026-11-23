@@ -16,7 +16,12 @@ export function parseRecording(input) {
       if (!r || r.id !== initial.id || !['x','y','theta','distance','v','w'].every(k => typeof r[k] === 'number' && Number.isFinite(r[k])) ||
         r.x < initial.radius-1e-10 || r.x > world.width - initial.radius+1e-10 || r.y < initial.radius-1e-10 || r.y > world.height - initial.radius+1e-10 || r.distance < 0 || typeof r.bumper !== 'boolean' ||
         !Array.isArray(r.scan) || r.scan.length !== initial.laser.rays || !r.scan.every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= initial.laser.range)) throw new Error(`Replay: robô no frame ${i} inválido`);
-      return { ...initial, x:r.x, y:r.y, theta:r.theta, distance:r.distance, v:r.v, w:r.w, bumper:r.bumper, scan:[...r.scan] };
+      const dyn = {};
+      for (const k of ['vx', 'vy', 'omega']) {
+        if (r[k] !== undefined && (typeof r[k] !== 'number' || !Number.isFinite(r[k]))) throw new Error(`Replay: robô no frame ${i} inválido`);
+        dyn[k] = r[k] ?? 0;
+      }
+      return { ...initial, x:r.x, y:r.y, theta:r.theta, distance:r.distance, v:r.v, w:r.w, bumper:r.bumper, scan:[...r.scan], ...dyn };
     });
     return { tick:i, time:f.time, robots };
   });

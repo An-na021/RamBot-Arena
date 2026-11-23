@@ -20,7 +20,7 @@ export function mount() {
     view?.draw(state,session.selected);
     $('play').innerHTML=session.running?'Ⅱ <span>Pausar</span>':'▶ <span>Iniciar</span>';
     $('mode').textContent=session.replay?(session.result?.finished?`REPLAY · ${session.result.reason}`:'REPRODUÇÃO DE GRAVAÇÃO'):session.result?.finished?session.result.reason:session.running?'SIMULAÇÃO EM EXECUÇÃO':'SIMULAÇÃO PAUSADA';
-    $('scenario-note').hidden=!session.world.scenario;
+    $('scenario-note').hidden=session.world.scenario?.type!=='sumo';
     $('time').textContent=state.time.toFixed(2).padStart(5,'0'); $('tick').textContent=String(state.tick).padStart(5,'0');
     $('robot-name').textContent=robot.id;
     for(const [id,key] of [['pos-x','x'],['pos-y','y'],['theta','theta'],['distance','distance']]) $(id).textContent=robot[key].toFixed(3);

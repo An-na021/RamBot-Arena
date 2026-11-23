@@ -1,41 +1,93 @@
-# Implementation Plan — 001-arena
+# Implementation Plan: RamBot Arena — simulador base
 
-Data: 2026-11-18. Spec: spec.md. Framework: GitHub SpecKit, templates oficiais preservados em `.specify/templates/`; fluxo realizado pelo assistente, sem alegar execução da CLI `specify`.
+**Branch**: `001-arena` | **Date**: 2026-11-18 (manual) · reconstruído pelo Spec Kit em 2026-11-23 | **Spec**: [spec.md](spec.md)
 
-## Summary / Technical Context
+**Input**: Feature specification from `/specs/001-arena/spec.md`
 
-SPA local e estática: JavaScript ESM, Vite 6, Three.js 0.180, Acorn 8, Vitest 3 com V8 e jsdom; Node 22. JSON é o formato do mundo. Versões exatas no package-lock. Sem banco, serviços remotos ou motor de física.
+## Summary
+
+SPA local e estática que simula robôs de tração diferencial num núcleo 2D headless e determinístico e desenha o estado em 3D. Mundo em JSON validado; dinâmica, colisão e sensores próprios; controlador em subconjunto de JS interpretado por AST; sessão com play/pause/step/reset, gravação e replay; modalidades fora do núcleo (sumô e labirinto). Decisões em [research.md](research.md); entidades em [data-model.md](data-model.md); contratos em [contracts/](contracts/).
+
+## Technical Context
+
+**Language/Version**: JavaScript ESM, Node 22+
+
+**Primary Dependencies**: Three.js 0.180 com OrbitControls (somente desenho), Acorn 8 (análise do controlador), Vite 6 (dev/build)
+
+**Storage**: N/A (sem backend, login ou persistência remota; mundos e gravações por arquivo local)
+
+**Testing**: Vitest 3 com cobertura V8 e jsdom
+
+**Target Platform**: navegador moderno com WebGL; Node 22+ para execução headless
+
+**Project Type**: SPA estática com núcleo headless
+
+**Performance Goals**: 20 ticks/s em tempo real com até 8 robôs e 100 obstáculos; dt fixo independente de FPS
+
+**Constraints**: determinismo bit a bit; nenhum motor de física pronto; núcleo sem DOM/WebGL; controlador sem eval, laços ou funções do usuário
+
+**Scale/Scope**: limites em research.md R10; 3 mundos de exemplo (sumô, labirinto, campo livre)
 
 ## Constitution Check
 
-Antes de implementar: documentos escritos primeiro; core sem DOM/Three; JS interpretado com orçamento; todos os arquivos de src entram na cobertura; sem bônus antes do completo. Depois: executar `npm run check`, registrar resultado em validation.md, revisar tasks e rastreabilidade. Qualquer falha mantém task aberta.
+*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.* Constitution 2.0.1.
+
+| Princípio | Verificação | Pré | Pós |
+| --- | --- | --- | --- |
+| I. Especificação primeiro | briefing → constitution → spec → plan → tasks antes do código; contratos permitem regeneração | ✅ | ✅ |
+| II. Núcleo independente e reproduzível | `src/core` sem DOM/Three; PRNG semeado; dinâmica própria em subpassos fixos | ✅ | ✅ |
+| III. PoC pequena e honesta | sumô como modalidade; regras em `src/modes`; física simplificada declarada; bônus fora | ✅ | ✅ |
+| IV. Stack e limites | ESM, Vite, Three só para desenho, Acorn, Vitest/V8/jsdom; lockfile | ✅ | ✅ |
+| V. Aceite e rastreabilidade | FR/NFR → tasks → testes com IDs → commits `Txxx:`; cobertura ≥ 80%; README gerado | ✅ | ✅ |
+| VI. Entrega em grupo | trio registrado; pitch e publicação como tarefas externas | ✅ | ✅ |
 
 ## Project Structure
 
-`src/core/world.js` valida/normaliza entradas; `geometry.js` interseções; `controller.js` interpreta JS limitado; `simulation.js` atualiza estado; `recording.js` valida gravações; `session.js` controla modos; `src/renderer.js` desenha snapshots com Three; `src/app.js` liga DOM à sessão. `worlds/` contém exemplos; `tests/` contém aceite/core e adaptadores; `scripts/` executa headless, métricas e verificação de IDs. Nenhum módulo core importa renderer ou app.
+### Documentation (this feature)
 
-`src/modes/sumo.js` contém validação do cenário e função pura de resultado; Session orquestra essa regra, Simulation desconhece modalidades. Cenário `{type:'sumo', x:6, y:4.5, radius:3.5, maxTicks:1200}`. Exatamente dois robôs devem começar inteiramente dentro do círculo. Saída quando distância do centro do robô ao centro do ringue menos raio do robô > raio do ringue + 1e-10. Ambos fora → empate; um fora → outro vence; caso contrário tick ≥ maxTicks → empate. A marcação não interfere no laser/colisão; bordas externas do mapa continuam sólidas. Contatos bloqueantes: sem empurrões. Mundo padrão sumo.json; labirinto/livre comprovam generalidade.
+```text
+specs/001-arena/
+├── spec.md            # /speckit-specify
+├── plan.md            # /speckit-plan (este arquivo)
+├── research.md        # /speckit-plan, fase 0
+├── data-model.md      # /speckit-plan, fase 1
+├── quickstart.md      # /speckit-plan, fase 1 (execução e regeneração)
+├── contracts/         # world, controllers, replay, session
+├── tasks.md           # /speckit-tasks
+├── checklists/requirements.md
+├── requirements.md    # extração do briefing e lacunas
+├── references.md      # pesquisa das oito referências
+├── traceability.md    # matriz requisito → task → teste
+├── validation.md      # evidências de execução
+└── history/           # versão manual de 2026-11-18
+```
 
-## Referências que fundamentam as escolhas
+### Source Code (repository root)
 
-Pesquisa rastreável em references.md: Stage → núcleo leve; Gazebo → cena/inspector/transporte/laser; Webots → mundo/controlador e determinismo; Roboton → modalidade; Gears/Open Roberta/sBotics/Thayane → fluxo educacional, editor, mundos e observação. Restrições do briefing prevalecem sobre as referências: nenhum motor de física, ruído não semeado ou importação de código dessas plataformas.
+```text
+src/
+├── core/
+│   ├── world.js        # validação e normalização do mundo
+│   ├── geometry.js     # interseções, laser, utilitários
+│   ├── controller.js   # interpretador do subconjunto de JS
+│   ├── simulation.js   # passo dinâmico, sensores, memória
+│   ├── recording.js    # validação de gravações
+│   └── session.js      # live/replay, transporte, gravação, modalidades
+├── modes/
+│   ├── sumo.js         # regras e estratégia padrão de sumô
+│   └── maze.js         # estratégia padrão de labirinto
+├── renderer.js         # Three.js: desenha snapshots
+├── app.js              # liga DOM à sessão
+└── style.css
+worlds/                 # sumo.json, labirinto.json, livre.json
+tests/                  # aceite headless, sessão, UI (jsdom), renderer
+scripts/                # headless.mjs, report.mjs, traceability.mjs
+```
 
-## Algoritmo e determinismo
+**Structure Decision**: projeto único; nenhum módulo de `src/core` importa renderer, app ou modalidades, exceto `session.js`, que orquestra as modalidades.
 
-Unidades SI. Plano x/y, theta anti-horário, zero aponta +x. Render mapeia (x,y) para (x,altura,-y). dt ∈[0,001;0,1], default 0,05. Robôs circulares; obstáculos AABB. Tração: para w≈0, x+=v cos(theta)dt; y+=v sin(theta)dt; caso contrário arco exato: x+=(v/w)(sin(theta+w dt)-sin(theta)), y-=(v/w)(cos(theta+w dt)-cos(theta)). Theta normalizado por atan2(sin,cos).
+## Complexity Tracking
 
-Controladores recebem snapshot do início do tick. PRNG xorshift32 usa seed unsigned 32; seed zero normalizada para 1. Velocidades limitadas por maxLinear/maxAngular. Aplicar subpassos: n=ceil(maxAbsV*dt/(menorRaio/2)), mínimo 1; limites de velocidades/raio evitam explosão de n. Cada subpasso calcula propostas simultâneas; proposta colidindo com parede, obstáculo, proposta de outro robô OU posição anterior de outro robô é bloqueada (regra conservadora). Rotação continua mesmo se translação bloqueada; bumper persiste no tick; odometria acumula somente deslocamento aceito. Não simular forças, inércia, escorregamento ou rodas individuais.
-
-Laser sai do centro; N raios igualmente espaçados no FOV, de -FOV/2 a +FOV/2; raio único em theta. Inclui bordas, retângulos e outros círculos; menor distância não negativa, limitada ao range. Laser/odometria/bumper finais recalculados após movimento. Erro de controlador aborta tick atomicamente, inclusive PRNG.
-
-## Controle, gravação e interface
-
-Interpretador Acorn: ver contrato controllers.md; proibir qualquer AST fora da lista e limitar tamanho/expressões. Sem eval. `Session` possui modos live/replay, running boolean, seleção, gravação limitada a 5.000 ticks. Frames são clones; replay valida formato e não avalia programas. dt fixo; RAF acumula tempo com teto de 0,25 s por frame para recuperação estável, nunca dt variável.
-
-Layout escuro de laboratório, arena central, mundos/programa à esquerda, inspeção à direita, controles e timeline abaixo. Formulários acessíveis e responsivos, entrada JSON via arquivo ou editor, controlador por robô, erros em aria-live. Renderer atualiza pose/laser e descarta recursos ao reconstruir a arena. Gravação exportada por download local.
-
-## Validação / riscos
-
-Testes analíticos de reta/arco/laser, parede fina, colisão simultânea, atomicidade, PRNG, reset, replay corrompido; jsdom para eventos e render adaptado com driver WebGL substituído em teste. Cobertura inclui UI e renderer, mas testes do renderer não provam pixels reais. Fazer QA de navegador se infraestrutura disponível e registrar limites. Relatórios de V8: linhas/branches/funções/statements ≥80%. `npm run test:coverage` atualiza README; CI compara métricas rastreadas.
-
-Não prometer equivalência com robô real nem reconstrução provada até executar experimento de regeneração independente. GitHub depende da conta/destino do grupo. Não inventar commits remotos ou aprovação humana.
+| Violação | Por que necessária | Alternativa mais simples rejeitada |
+| --- | --- | --- |
+| Solver iterativo de contato (feature 003) | empurrão e travamento corretos com limites de força | contato bloqueante (sem empurrão) — substituído pela constitution 2.0.0 |

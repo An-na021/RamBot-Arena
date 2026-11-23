@@ -21,7 +21,7 @@ export function createRenderer(container) {
     disposeRoot(); root = new THREE.Group(); scene.add(root); world = input; robots = []; beams = [];
     box(world.width, 0.12, world.height, world.width/2, -0.08, -world.height/2, 0x26382a);
     const grid = new THREE.GridHelper(Math.max(world.width,world.height), Math.max(world.width,world.height), 0x506247, 0x344a34); grid.position.set(world.width/2,0,-world.height/2); root.add(grid);
-    if (world.scenario) {
+    if (world.scenario?.type === 'sumo') {
       const ring = new THREE.Mesh(new THREE.CircleGeometry(world.scenario.radius,96),new THREE.MeshStandardMaterial({color:0x18241b,roughness:.9})); ring.rotation.x=-Math.PI/2;ring.position.set(world.scenario.x,.012,-world.scenario.y);ring.receiveShadow=true;root.add(ring);
       const edge = new THREE.Mesh(new THREE.RingGeometry(world.scenario.radius-.1,world.scenario.radius,96),new THREE.MeshBasicMaterial({color:0xd8e9bf,side:THREE.DoubleSide}));edge.rotation.x=-Math.PI/2;edge.position.set(world.scenario.x,.018,-world.scenario.y);root.add(edge);
     }

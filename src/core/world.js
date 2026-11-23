@@ -35,6 +35,7 @@ export function parseWorld(input) {
     const robot = { id: r.id, x: num(r.x, `${p}.x`, 0, world.width), y: num(r.y, `${p}.y`, 0, world.height),
       theta: num(r.theta ?? 0, `${p}.theta`, -Math.PI, Math.PI), radius: num(r.radius ?? 0.25, `${p}.radius`, 0.1, 1),
       maxLinear: num(r.maxLinear ?? 1, `${p}.maxLinear`, 0.01, 3), maxAngular: num(r.maxAngular ?? 3, `${p}.maxAngular`, 0.01, 10),
+      mass: num(r.mass ?? 1, `${p}.mass`, 0.1, 10), grip: num(r.grip ?? 6, `${p}.grip`, 0.1, 10), lateralGrip: num(r.lateralGrip ?? 3, `${p}.lateralGrip`, 0.1, 10),
       laser: { rays: num(r.laser.rays, `${p}.laser.rays`, 1, 64), range: num(r.laser.range, `${p}.laser.range`, 0.1, 50), fov: num(r.laser.fov, `${p}.laser.fov`, 0, Math.PI * 2) } };
     if (!Number.isInteger(robot.laser.rays)) fail(`${p}.laser.rays`, 'deve ser inteiro');
     if (blocked(robot, world)) fail(p, 'posição inicial colide com borda ou obstáculo');
