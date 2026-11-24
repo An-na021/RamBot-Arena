@@ -63,4 +63,8 @@ Relatórios versionados em [resumo de cobertura](coverage/coverage-summary.json)
 
 **Anna Heloísa Malschitzky, William Fagundes e Sandriely Maciel** (trio). Repositório: [An-na021/RamBot-Arena](https://github.com/An-na021/RamBot-Arena).
 
+**Versão Online:** https://ram-bot-arena.vercel.app/
+
 Commits usam `Txxx: descrição`; cada task aponta para FR/NFR. A entrega usa a branch principal `main`; o desenvolvimento inicial está preservado na branch local `001-arena`. [Acompanhar testes e cobertura no GitHub Actions](https://github.com/An-na021/RamBot-Arena/actions). T011/T012 permanecem abertas até regeneração independente e apresentação efetivas.
+
+
